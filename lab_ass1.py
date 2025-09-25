@@ -57,17 +57,31 @@
 #         print(i, end=" ")
 #     print()
 
-#6
-cash = int(input("Enter the cash amount: "))    
-if cash % 5 != 0 and cash % 10 == 0:
-    notes_of_100 = cash // 100
-    cash = cash % 100
-    notes_of_50 = cash // 50
-    cash = cash % 50
-    notes_of_10 = cash // 10
-    cash = cash % 10
-    print("Notes of 100:", notes_of_100)
-    print("Notes of 50:", notes_of_50)
-    print("Notes of 10:", notes_of_10)
-else:
-    print("Invalid amount. Please enter an amount in multiples of 10.")
+# #6
+# cash = int(input("Enter the cash amount: "))    
+# if cash > 0:
+#     notes_of_100 = cash // 100
+#     cash = cash % 100
+#     notes_of_50 = cash // 50
+#     cash = cash % 50
+#     notes_of_10 = cash // 10
+#     cash = cash % 10
+#     print("Notes of 100:", notes_of_100)
+#     print("Notes of 50:", notes_of_50)
+#     print("Notes of 10:", notes_of_10)
+#     print("Remaining cash (less than 10):", cash)
+# elif cash == 0:
+#     print("Invalid cash amount. Go get a j*b!")
+# else:
+#     print("Just repay your loan you fool!")
+
+#7
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+def GCD(x, y):
+    while(y):
+        x, y = y, x % y
+    return x
+
+print(GCD(a, b))
