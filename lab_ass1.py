@@ -1,10 +1,24 @@
+# Lab Assignment 1
+# Name: Pratik Ranjan Mahala
+# Regd No: 24E113A07
+# Serial No: 15
+
+
+
 # #1
+# import math
 # def calc(a,b):
 #     print("OPERATIONS MENU")
 #     print("1. Addition")
 #     print("2. Subtraction")
 #     print("3. Multiplication")
 #     print("4. Division")
+#     print("5. Exponent")
+#     print("6. Tan(x)")
+#     print("7. Sin(x)")
+#     print("8. Cos(x)")
+#     print("9. Factorial")
+#     print("10. Log(x)")
 #     choice = int(input("Enter your choice (1-4): "))
 #     if choice == 1:
 #         return a + b
@@ -14,9 +28,22 @@
 #         return a * b
 #     elif choice == 4:
 #         return a / b
+#     elif choice == 5:
+#         return math.pow(x,y)
+#     elif choice == 6:
+#         return math.tan(math.radians(x))
+#     elif choice == 7:
+#         return math.sin(math.radians(x))
+#     elif choice == 8:
+#         return math.cos(math.radians(x))
+#     elif choice == 9:
+#         return math.factorial(x)
+#     elif choice == 10:
+#         return math.log(x)
 #     else:
 #         print("Invalid choice")
 #         return None
+    
 
 # x = int(input("Enter first number: "))
 # y = int(input("Enter second number: "))
@@ -75,14 +102,28 @@
 # else:
 #     print("Just repay your loan you fool!")
 
-#7
-a = int(input("Enter first number: "))
-b = int(input("Enter second number: "))
+# #7
+# a = int(input("Enter first number: "))
+# b = int(input("Enter second number: "))
 
-def GCD(x, y):
-    while(y):
-        x, y = y, x % y
-    return x
+# def GCD(x, y):
+#     while(y):
+#         x, y = y, x % y
+#     return x
 
-print(GCD(a, b))
+# print(GCD(a, b))
 
+#8
+no_of_employees = 10
+overtime_rate = 12
+overtime_pay = 0
+
+for i in range(1, no_of_employees+1):
+    hours_worked = int(input(f"Enter hours worked for employee {i}: "))
+    if hours_worked > 40:
+        overtime_hours = hours_worked - 40
+        overtime_pay += overtime_hours * overtime_rate
+    else:
+        overtime_pay += 0
+
+print(f"Overtime Pay: ${overtime_pay}")
