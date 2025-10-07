@@ -85,3 +85,4 @@ def GCD(x, y):
     return x
 
 print(GCD(a, b))
+
