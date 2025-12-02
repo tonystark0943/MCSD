@@ -77,40 +77,83 @@
 # read(3)
 # write(3, 15)
 
-stack=[0]*5
-TOP=-1
+# stack=[0]*5
+# TOP=-1
 
-def push(value):
-    global TOP
-    if TOP < len(stack)-1:
-        TOP += 1
-        stack[TOP] = value
-        print(f"{value} pushed to stack")
-    else:
-        print("Stack Overflow")
+# def push(value):
+#     global TOP
+#     if TOP < len(stack)-1:
+#         TOP += 1
+#         stack[TOP] = value
+#         print(f"{value} pushed to stack")
+#     else:
+#         print("Stack Overflow")
 
-def pop():
-    global TOP
-    if TOP >= 0:
-        value = stack[TOP]
-        TOP -= 1
-        print(f"{value} popped from stack")
-        return value
-    else:
-        print("Stack Underflow")
-        return None
+# def pop():
+#     global TOP
+#     if TOP >= 0:
+#         value = stack[TOP]
+#         TOP -= 1
+#         print(f"{value} popped from stack")
+#         return value
+#     else:
+#         print("Stack Underflow")
+#         return None
 
-def peek():
-    if TOP >= 0:
-        return stack[TOP]
-    else:
-        print("Stack is empty")
-        return None
+# def peek():
+#     if TOP >= 0:
+#         return stack[TOP]
+#     else:
+#         print("Stack is empty")
+#         return None
 
-push(10)
-push(20)
-pop()
-push(30)
-pop()
-print("Top element is:", peek())
- 
+# push(10)
+# push(20)
+# pop()
+# push(30)
+# pop()
+# print("Top element is:", peek())
+
+PC = 0
+MAR = 0
+MDR = ""
+IR = ""
+memory = {
+    0: "LOAD A",
+    1: "ADD B",
+    2: "STORE C",
+    3: "HALT"
+}
+
+data = {"A": 20, "B": 3, "C": 9}
+
+while True:
+    # Fetch
+    MAR = PC
+    MDR = memory[MAR]
+    IR = MDR
+    PC += 1
+    print(f"FETCH: PC={PC}, MAR={MAR}, MDR={MDR}, IR={IR}")
+
+    # Decode
+    parts = IR.split()
+    opcode = parts[0]
+    operand = parts[1] if len(parts) > 1 else None
+    print(f"DECODE: opcode={opcode}, operands={operand}")
+
+    # Execute
+    if opcode == "LOAD":
+        ACC = data[operand]
+        print(f"EXECUTE: ACC <- {operand} ({ACC})")
+    elif opcode == "STORE":
+        data[operand] = ACC
+        print(f"EXECUTE: {operand} <- ACC ({ACC})")
+    elif opcode == "ADD":
+        ACC += data[operand]
+        print(f"EXECUTE: ACC <- ACC + {operand} ({ACC})")
+    elif opcode == "HALT":
+        print("EXECUTE: HALT encountered. Stopping execution.")
+        break
+
+print("Initial Data:", data)
+print("Final ACC:", ACC)
